@@ -11,7 +11,7 @@ class CrawlerCronjob extends CronJob {
     super({
       name: 'crawler-cronjob',
       onTick: async () => {
-        await crawlerService.crawler();
+        await this.crawlerService.crawler();
       },
       cronTime: '*/30 * * * * *',
       start: true,

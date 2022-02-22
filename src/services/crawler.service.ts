@@ -119,5 +119,6 @@ export class CrawlerService {
     await this.syncHotelSummary();
     await this.syncHotelImage();
     await this.syncHotelBooking();
+    console.log('INFO: sync data...');
   }
 }
