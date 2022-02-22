@@ -1,13 +1,25 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {AggregationPipeline} from '../types';
 
-export function getHotelAggregate(hotelIds: string[]): AggregationPipeline {
+export function getHotelAggregate(
+  hotelIds: string[],
+  destinationIds: number[],
+): AggregationPipeline {
   const pipeline: AggregationPipeline = [
     {
       $match: {
-        hotel_id: {
-          $in: hotelIds,
-        },
+        $or: [
+          {
+            hotel_id: {
+              $in: hotelIds,
+            },
+          },
+          {
+            destination_id: {
+              $in: destinationIds,
+            },
+          },
+        ],
       },
     },
     {
